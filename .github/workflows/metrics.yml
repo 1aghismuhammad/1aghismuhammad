@@ -1,0 +1,43 @@
+name: Metrics
+on:
+  # Update otomatis setiap jam 00:00
+  schedule: [{cron: "0 0 * * *"}]
+  # Bisa dijalankan manual
+  workflow_dispatch:
+  # Update otomatis saat ada perubahan di master/main branch
+  push: {branches: ["master", "main"]}
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # Token GitHub bawaan
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          # Opsi Dasar
+          user: 1aghismuhammad
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Jakarta
+
+          # Kalender Kontribusi 3D (Isocalendar)
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+
+          # Bahasa Pemrograman yang sering dipakai
+          plugin_languages: yes
+          plugin_languages_ignored: html, css # Opsional, jika ingin fokus ke logic
+          plugin_languages_details: bytes-size, percentage
+          
+          # PageSpeed Insights untuk Aksiva Studio
+          plugin_pagespeed: yes
+          plugin_pagespeed_url: https://aksivastudio.my.id
+          
+          # Integrasi Musik Spotify (Hindia, Feast, dll)
+          plugin_music: yes
+          plugin_music_provider: spotify
+          plugin_music_mode: recent
+          plugin_music_token: ${{ secrets.SPOTIFY_TOKENS }}
