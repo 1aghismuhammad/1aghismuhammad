@@ -37,3 +37,4 @@ jobs:
           plugin_pagespeed_url: https://aksivastudio.my.id
           
           # Integrasi Musik Spotify (Hindia, Feast, dll)
+          plugin_music: no
