@@ -29,12 +29,11 @@ jobs:
 
           # Bahasa Pemrograman yang sering dipakai
           plugin_languages: yes
-          plugin_languages_ignored: html, css # Opsional, jika ingin fokus ke logic
+          plugin_languages_ignored: html, css
           plugin_languages_details: bytes-size, percentage
           
           # PageSpeed Insights untuk Aksiva Studio
           plugin_pagespeed: yes
           plugin_pagespeed_url: https://aksivastudio.my.id
           
-      
           plugin_music: no
